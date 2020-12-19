@@ -1,0 +1,49 @@
+https://leetcode-cn.com/problems/construct-string-from-binary-tree/submissions/
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    void _tree2str(TreeNode* root,string& str)
+    {
+        if(root==nullptr)
+            return ;
+        //转换当前节点数据：int->string
+        stringstream ss;
+        ss<<root->val;
+        str+=ss.str();
+
+        if(root->left)
+        {
+            str+='(';
+            _tree2str(root->left,str);
+            str+=')';
+        }
+        else
+        {
+            if(root->right)
+            {
+                str+="()";
+            }
+        }
+
+        if(root->right)
+        {
+            str+='(';
+            _tree2str(root->right,str);
+            str+=')';
+        }
+    }
+    string tree2str(TreeNode* t) {
+        string str;
+        _tree2str(t,str);
+        return str;
+    }
+};
