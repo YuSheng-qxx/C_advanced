@@ -1,0 +1,51 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* _build(vector<int>& preorder,int& idx,vector<int>& inorder,int L,int R)
+    {
+        if(L>R)
+        {
+            return nullptr;
+        }
+        TreeNode* root=new TreeNode(preorder[idx]);
+        //中序序列中找到位置
+        int rootIdx=L;
+        for(; rootIdx<=R; ++rootIdx)
+        {
+            if(root->val == inorder[rootIdx])
+                break;
+        }
+        if(L<rootIdx)
+        {
+            //左子树存在：[L,rootIdx)
+            ++idx;
+            root->left=_build(preorder,idx,inorder,L,rootIdx-1);
+        }
+        else
+        {
+            root->left=nullptr;
+        }
+        if(rootIdx<R)
+        {
+            ++idx;
+            root->right=_build(preorder,idx,inorder,rootIdx+1,R);
+        }
+        else
+        {
+            root->right=nullptr;
+        }
+        return root;
+    }
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        int idx=0;
+        return _build(preorder,idx,inorder,0,inorder.size()-1);
+    }
+};
