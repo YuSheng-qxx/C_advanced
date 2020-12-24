@@ -1,0 +1,21 @@
+class Solution {
+public:
+    /**
+     * 
+     * @param x int整型 
+     * @return int整型
+     */
+    int sqrt(int x) {
+        // write code here
+        if(x==1)
+            return 1;
+        int ret=1;
+        int num=0;
+        while(ret*ret<=x)
+        {
+            num=ret;
+            ret++;
+        }
+        return num;
+    }
+};
