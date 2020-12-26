@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<string> topKFrequent(vector<string>& words, int k) {
+        map<string, int> mp;
+        for(const auto& wd:words)
+        {
+            mp[wd]++;
+        }
+        //key可以重复，不支持[]
+        multimap<int, string, greater<int>> mf;
+        //遍历mp：字母序
+        for(const auto& p:mp)
+        {
+            //mf:按照词频插入，词频相同的单词在中序遍历连续的区间
+            mf.insert(make_pair(p.second, p.first));
+        }
+        vector<string> vec;
+         for(const auto& p:mf)
+        {
+            if(k==0)
+            {
+               break;
+            }
+            else
+            {
+                vec.push_back(p.second);
+                --k;
+            }
+        }
+        return vec;
+    }
+};
