@@ -1,0 +1,29 @@
+class Transform {
+public:
+    string trans(string s, int n) {
+        // write code here
+        if(n==0)
+            return s;
+        int len=s.size();
+        reverse(s.begin(),s.end());
+        for(int i=0;i<len;i++)
+        {
+            int j=i;
+            while(s[j]!=' '&&j<len) 
+                j++;
+            reverse(s.begin()+i,s.begin()+j);
+            i=j;
+        }
+        for(int i=0;i<len;i++)
+        {
+            if(s[i]!=' ')
+            {
+                if(s[i]>='A'&&s[i]<='Z')
+                    s[i]=s[i]+32;
+                else if(s[i]>='a'&&s[i]<='z')
+                    s[i]=s[i]-32;
+            }
+        }
+        return s;
+    }
+};
