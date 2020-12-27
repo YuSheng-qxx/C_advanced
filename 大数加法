@@ -1,0 +1,43 @@
+class Solution {
+public:
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     * 计算两个数之和
+     * @param s string字符串 表示第一个整数
+     * @param t string字符串 表示第二个整数
+     * @return string字符串
+     */
+    string solve(string s, string t) {
+        // write code here
+        if(t.empty())
+            return s;
+        if(s.empty())
+            return t;
+        int num1=s.size()-1;
+        int num2=t.size()-1;
+        int value1=0,value2=0,next=0;
+        string str;
+        while(num1>=0||num2>=0)
+        {
+            value1=(num1>=0?(s[num1--]-'0'):0);
+            value2=(num2>=0?(t[num2--]-'0'):0);
+            int tmp=value1+value2+next;
+            if(tmp>9)
+            {
+                next=1;
+                tmp-=10;
+            }
+            else
+            {
+                next=0;
+            }
+            str+=(tmp+'0');
+        }
+        if(next==1)
+        {
+            str+='1';
+        }
+        reverse(str.begin(),str.end());
+        return str;
+    }
+};
