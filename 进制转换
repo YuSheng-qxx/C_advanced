@@ -1,0 +1,32 @@
+class Solution {
+public:
+    /**
+     * 进制转换
+     * @param M int整型 给定整数
+     * @param N int整型 转换到的进制
+     * @return string字符串
+     */
+    string solve(int M, int N) {
+        // write code here
+        bool flag = false;
+        char str[17] = {"0123456789ABCDEF"};
+        if (M < 0) {
+            flag = true;
+            M = -M;
+        }
+        stack<char> s;
+        while (M) {
+            s.push(str[M % N]);
+            M /= N;
+        }
+        string res = "";
+        while (!s.empty()) {
+            res = res + s.top();
+            s.pop();
+        }
+        if (flag) {
+            res = '-' + res;
+        }
+        return res;
+    }
+};
