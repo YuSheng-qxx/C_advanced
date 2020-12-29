@@ -1,0 +1,23 @@
+class Finder {
+public:
+    int findKth(vector<int> a, int n, int K) {
+        // write code here
+        sort(a.begin(),a.end());
+        stack<int> st;
+        for(int i=0;i<n;i++)
+        {
+            st.push(a[i]);
+        }
+        int tmp=0;
+        for(int i=0;i<K;i++)
+        {
+            tmp=st.top();
+            st.pop();
+            if(st.top()==tmp)
+            {
+                st.pop();
+            }
+        }
+        return tmp;
+    }
+};
