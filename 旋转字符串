@@ -1,0 +1,32 @@
+class Solution {
+public:
+    /**
+     * 旋转字符串
+     * @param A string字符串 
+     * @param B string字符串 
+     * @return bool布尔型
+     */
+    bool solve(string A, string B) {
+        // write code here
+        if(A.size()!=B.size())
+            return false;
+        int i=0;
+        for(;i<A.size()-1;i++)
+        {
+            string tmp="";
+            for(int j=i;j<A.size();j++)
+            {
+                tmp+=A[j];
+            }
+            for(int j=0;j<i;j++)
+            {
+                tmp+=A[j];
+            }
+            if(tmp==B)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+};
