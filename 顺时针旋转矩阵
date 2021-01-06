@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<vector<int> > rotateMatrix(vector<vector<int> > mat, int n) {
+        // write code here
+        vector<vector<int>> v(n,vector<int>(n));
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                v[i][j]=mat[n-j-1][i];
+            }
+        }
+        return v;
+    }
+};
