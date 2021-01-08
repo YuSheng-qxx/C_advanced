@@ -1,0 +1,21 @@
+class Solution {
+public:
+    /**
+     * 
+     * @param x int整型 
+     * @return bool布尔型
+     */
+    bool isPalindrome(int x) {
+        // write code here
+        if(x<0)
+            return false;
+        int ret;
+        int tmp=x;
+        while(tmp)
+        {
+            ret=ret*10 + tmp%10;
+            tmp/=10;
+        }
+        return ret==x;
+    }
+};
