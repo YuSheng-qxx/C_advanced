@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> findElement(vector<vector<int> > mat, int n, int m, int x) {
+        // write code here
+        int i=n-1,j=0;
+        while(i>=0 && j<m)
+        {
+            if(mat[i][j]==x)
+            {
+                return {i,j};
+            }
+            else if(mat[i][j]>x)
+            {
+                i--;
+            }
+            else{
+                j++;
+            }
+        }
+        return {-1,-1};
+    }
+};
