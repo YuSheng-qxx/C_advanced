@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int searchInsert(std::vector<int>& nums, int target) {
+    int result= 0;
+    for(;result<nums.size();result++)
+    {
+        if(nums[result] >= target)
+        {
+            break;
+        }
+    }
+    return result;
+    }
+};
