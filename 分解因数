@@ -1,0 +1,33 @@
+#include <iostream>
+#include <algorithm>
+#include <math.h>
+#include <vector>
+using namespace std;
+
+int main(){
+    int n,k,i;
+    while(cin >> n){
+        int num = n;
+        vector<int> v;
+        for(i = 2; i <= sqrt(n); i++){
+            if(n % i == 0){
+                while(n % i == 0){
+                    n = n / i;
+                    v.push_back(i);
+                }
+            }
+        }
+        if(n != 1){
+            v.push_back(n);
+        }
+        cout << num << " = ";
+        for (int k = 0; k < v.size(); k++)
+        {
+            if (k == v.size() - 1)
+                cout << v[k] << endl;
+            else
+                cout << v[k] << " * ";
+        }
+    }
+    return 0;
+}
