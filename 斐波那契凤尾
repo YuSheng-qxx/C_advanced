@@ -1,0 +1,25 @@
+// write your code here cpp
+// write your code here cpp
+#include<iostream>
+using namespace std;
+int main()
+{
+    int fib[100001];
+    fib[0]=1;
+    fib[1]=1;
+        
+    for(int i=2;i<=100000;i++)
+    {
+        fib[i]=fib[i-1]+fib[i-2];
+        fib[i]%=1000000;
+    }
+    int n;
+    while(cin>>n)
+    {
+        if(n<29)
+            cout<<fib[n]<<endl;
+        else
+            printf("%06d\n",fib[n]);
+    }
+    return 0;
+}
