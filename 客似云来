@@ -1,0 +1,25 @@
+// write your code here cpp
+// write your code here cpp
+#include<iostream>
+using namespace std;
+int main()
+{
+    long long arr[80]={0};
+    arr[0]=1;
+    arr[1]=1;
+    for(int i=2;i<80;i++)
+    {
+        arr[i]=arr[i-1]+arr[i-2];
+    }
+    int num1, num2;
+    while(cin>>num1>>num2)
+    {
+        long long sum=0;
+        for(int i=num1-1;i<num2;i++)
+        {
+            sum+=arr[i];
+        }
+        cout<<sum<<endl;
+    }
+    return 0;
+}
