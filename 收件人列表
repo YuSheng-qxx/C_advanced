@@ -1,0 +1,36 @@
+// write your code here cpp
+// write your code here cpp
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+int main()
+{
+    int n;
+    while(cin>>n)
+    {
+        vector<string> v;
+        getchar();
+        while(n--)
+        {
+            string str;
+            getline(cin, str);
+            if(str.find(" ") != str.npos || str.find(",") != str.npos)
+            {
+                str.insert(str.begin(), '\"');
+                str+='\"';
+            }
+            v.push_back(str);
+        }
+        for(int i=0;i<v.size();i++)
+            {
+                if(i==v.size()-1)
+                {
+                    cout<<v[i]<<endl;
+                }
+                else
+                    cout<<v[i]<<", ";
+            }
+    }
+    return 0;
+}
