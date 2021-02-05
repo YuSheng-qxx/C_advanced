@@ -1,0 +1,20 @@
+// write your code here cpp
+// write your code here cpp
+#include<iostream>
+using namespace std;
+int main()
+{
+    long long c[21]={0,0,1};
+    long long f[21]={0,1,2};
+    for(int i=3;i<21;i++)
+    {
+        c[i]=(i-1)*(c[i-1]+c[i-2]);
+        f[i]=i*f[i-1];
+    }
+    int n;
+    while(cin>>n)
+    {
+        printf("%.2f%%\n",100.0*c[n]/f[n]);
+    }
+    return 0;
+}
