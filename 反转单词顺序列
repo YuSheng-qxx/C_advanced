@@ -1,0 +1,28 @@
+class Solution {
+public:
+    void Reverse(string& str,int m,int n)
+    {
+        while(m<n)
+            swap(str[m++],str[n--]);
+    }
+    string ReverseSentence(string str) {
+        Reverse(str, 0, str.size()-1);
+        int i=0,tmp=0;
+        while(str[i]!='\0')
+        {
+            if(str[i]==' ')
+            {
+                i++;
+                tmp++;
+            }
+            else if(str[tmp]==' '||str[tmp]=='\0')
+            {
+                Reverse(str, i, tmp-1);
+                i=++tmp;
+            }
+            else
+                tmp++;
+        }
+        return str;
+    }
+};
