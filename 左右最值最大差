@@ -1,0 +1,24 @@
+class MaxGap {
+public:
+    int findMaxGap(vector<int> A, int n) {
+        // write code here
+        vector<int> lv(n,0);
+        vector<int> rv(n,0);
+        lv[0] = A[0];
+        for(int i=1; i<n; i++)
+        {
+            lv[i] = max(lv[i-1], A[i]);
+        }
+        rv[n-1] = A[n-1];
+        for(int i=n-2; i>=0; i--)
+        {
+            rv[i] = max(rv[i+1], A[i]);
+        }
+        int ret = 0;
+        for(int i=0; i<n; i++)
+        {
+            ret = max(ret, abs(lv[i]-rv[i]));
+        }
+        return ret;
+    }
+};
