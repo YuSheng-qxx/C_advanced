@@ -1,0 +1,55 @@
+class Solution {
+public:
+    /**
+     * 
+     * @param root TreeNode类 the root of binary tree
+     * @return int整型vector<vector<>>
+     */
+    vector<int> pre, mid, post;
+    void preorder(TreeNode* root)
+    {
+        if(root == NULL){
+            return;
+        }
+        pre.push_back(root->val);
+        preorder(root->left);
+        preorder(root->right);
+    }
+    
+    void midorder(TreeNode* root)
+    {
+        if(root == NULL){
+            return;
+        }
+        
+        midorder(root->left);
+        mid.push_back(root->val);
+        midorder(root->right);
+    }
+    
+    void postorder(TreeNode* root)
+    {
+        if(root == NULL){
+            return;
+        }
+        postorder(root->left);
+        postorder(root->right);
+        post.push_back(root->val);
+    }
+    
+    vector<vector<int> > threeOrders(TreeNode* root) {
+        // write code here
+        vector<vector<int>> mat;
+        if(root == NULL){
+            return mat;
+        }
+        preorder(root);
+        midorder(root);
+        postorder(root);
+        mat.push_back(pre);
+        mat.push_back(mid);
+        mat.push_back(post);
+        
+        return mat;
+    }
+};
